@@ -1,18 +1,20 @@
 /** Media Queries **/
+@use 'base/variables' as v;
+
 @mixin telefono {
-    @media (min-width: #{$telefono}) {
+    @media (min-width: #{v.$telefono}) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media (min-width: #{$tablet}) {
+    @media (min-width: #{v.$tablet}) {
         @content;
     }
 }
   
 @mixin desktop {
-    @media (min-width: #{$desktop}) {
+    @media (min-width: #{v.$desktop}) {
         @content;
     }
 }
@@ -23,12 +25,12 @@
 }
 @mixin boton($bgColor, $display) {
     background-color: $bgColor;
-    color: $blanco;
-    font-weight: $bold;
+    color: v.$blanco;
+    font-weight: v.$bold;
     text-decoration: none;
     padding: 1rem 3rem;
     text-align: center;
-    margin-top: $separacion / 2;
+    margin-top: calc(v.$separacion / 2);
     display: $display;
     border: none;
     &:hover {

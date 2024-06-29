@@ -1,39 +1,42 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
 .dark-mode {
-    background-color: darken($grisOscuro, 10);
+    background-color: darken(v.$grisOscuro, 10);
     p {
-        color: $blanco;
+        color: v.$blanco;
     }
     
     a, h1, h2, h3, h4 {
-        color: $gris;
+        color: v.$gris;
     }
     
     .anuncio,
     .resumen-propiedad {
-        background-color: $grisOscuro;
-        border: 1px solid $grisOscuro;
+        background-color: v.$grisOscuro;
+        border: 1px solid v.$grisOscuro;
         .precio {
-            color: $verde;
+            color: v.$verde;
         }
         .icono {
             filter: invert(100%);
         }
     }
     .texto-nosotros blockquote {
-        color: $blanco;
+        color: v.$blanco;
     }
     .formulario {
         label,
         legend,
         p {
-            color: $gris;
+            color: v.$gris;
         }
         input:not([type='submit']),
         textarea,
         select {
-            background-color: $grisOscuro;
-            border: 1px solid $grisOscuro;
-            color: $blanco;
+            background-color: v.$grisOscuro;
+            border: 1px solid v.$grisOscuro;
+            color: v.$blanco;
         }
     }
 }

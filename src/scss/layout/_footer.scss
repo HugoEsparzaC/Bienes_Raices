@@ -1,8 +1,11 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
 .footer {
-    padding: $separacion / 2 0;
-    background-color: $grisOscuro;
+    padding: calc(v.$separacion / 2) 0;
+    background-color: v.$grisOscuro;
     .contenido-footer {
-        padding-top: $separacion / 2;
+        padding-top: calc(v.$separacion / 2);
     }
     .navegacion {
         visibility: visible;
@@ -11,7 +14,7 @@
     }
     margin-bottom: 0;
     .copyright {
-        color: $blanco;
+        color: v.$blanco;
         text-align: center;
     }
 }
