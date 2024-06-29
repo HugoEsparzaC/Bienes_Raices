@@ -5,16 +5,21 @@ import { src, dest, watch, series } from 'gulp'
 import * as dartSass from 'sass'
 import gulpSass from "gulp-sass"
 import terser from 'gulp-terser'
+import concat from 'gulp-concat'
+import rename from 'gulp-rename'
 import sharp from 'sharp'
 
 const sass = gulpSass(dartSass)
 
 export function js( done ) {
-    src('src/js/app.js')
+    return src('src/js/**/*.js')
+        .pipe(concat('bundle.js'))
         .pipe(terser())
-        .pipe( dest('build/js'))
-    done()
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(dest('build/js'))
+        .on('end', done);
 }
+
 
 export function css( done ) {
     src('src/scss/app.scss', {sourcemaps: true})
@@ -22,7 +27,7 @@ export function css( done ) {
             outputStyle: 'compressed'
         }).on('error', sass.logError) )
         .pipe( dest('build/css', {sourcemaps: true}) )
-    done()
+    done();
 }
 
 export async function crop(done) {
@@ -47,7 +52,7 @@ export async function crop(done) {
                 .toFile(outputFile)
         });
 
-        done()
+        done();
     } catch (error) {
         console.log(error)
     }
@@ -86,7 +91,7 @@ export function dev( done ) {
     watch('src/scss/**/*.scss', css)
     watch('src/js/**/*.js', js)
     watch('src/img/**/*.{png, jpg}', imagenes)
-    done()
+    done();
 }
 
 export default series( crop, js, css, imagenes, dev )
