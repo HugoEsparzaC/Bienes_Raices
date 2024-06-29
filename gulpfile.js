@@ -11,15 +11,14 @@ import sharp from 'sharp'
 
 const sass = gulpSass(dartSass)
 
-export function js( done ) {
-    return src('src/js/**/*.js')
+export function js(done) {
+    src('src/js/**/*.js', {sourcemaps: true})
         .pipe(concat('bundle.js'))
         .pipe(terser())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('build/js'))
-        .on('end', done);
+        .pipe(dest('build/js', {sourcemaps: true}))
+    done();
 }
-
 
 export function css( done ) {
     src('src/scss/app.scss', {sourcemaps: true})
